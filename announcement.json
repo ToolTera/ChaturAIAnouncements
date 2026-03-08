@@ -1,0 +1,6 @@
+{
+  "id": "test-1",
+  "type": "info",
+  "message": "Welcome to ChaturAI! This is a test announcement.",
+  "dismissible": true
+}
