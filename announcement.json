@@ -1,6 +1,6 @@
 {
-  "id": "test-1",
+  "id": "welcome-v1",
   "type": "info",
-  "message": "Welcome to ChaturAI! This is a test announcement.",
+  "message": "Welcome to ChaturAI! Organise your AI chats across ChatGPT, Gemini, Grok, and Claude — all in one place.",
   "dismissible": true
 }
