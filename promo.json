@@ -1,22 +1,24 @@
 {
   "_guide": {
-    "REQUIRED": {
-      "id": "Campaign id. Dismissal is keyed to this — a NEW id re-shows the offer to everyone, including past dismissers. Convention: name-v1, name-v2.",
-      "enabled": "Kill switch. false hides the offer for everyone within the hour.",
+    "REQUIRED_FIELDS": {
+      "id": "Campaign id. Dismissal is keyed to this — a NEW id re-shows the offer to everyone, including users who dismissed a previous campaign. Convention: name-v1, name-v2.",
+      "enabled": "Kill switch. Set false to hide the offer for everyone within the hour.",
       "percent": "Display percentage (1-99). MUST match the real Lemon Squeezy discount or users see a different price at checkout.",
-      "code": "The Lemon Squeezy discount code. Pre-applied at checkout + shown in the modal. Must exist and be active in LS before enabling.",
-      "minDaysInstalled": "Days since install before the gift appears. 0 = immediately. Reinstalling resets the user's clock. Set to 3 for production."
+      "code": "The Lemon Squeezy discount code. Pre-applied at checkout + shown in the modal for copy. Must exist and be active in LS.",
+      "minDaysInstalled": "Days since install before the gift appears. 0 = immediately (testing). 3 = production. Reinstalling resets the user's clock."
     },
-    "OPTIONAL": {
-      "title": "Overrides the modal title. Plain string for all users, or per-language: {\"en\": \"...\", \"es\": \"...\"}. Omit = translated default 'A Gift for You'.",
-      "subtitle": "Overrides the modal subtitle. Same string-or-per-language format.",
-      "urgency": "Extra amber highlight line shown in the modal, e.g. '🔥 Limited launch offer'. Only claim scarcity if a real redemption cap is set in LS.",
-      "expiresAt": "ISO date like 2026-11-30T23:59:59Z. Shows a live countdown in the modal AND auto-hides the whole offer when passed. Match the real LS discount expiry."
+    "OPTIONAL_FIELDS": {
+      "title": "Overrides the modal title. Plain string for all users, or per-language: {\"en\": \"...\", \"es\": \"...\", \"fr\": \"...\", \"ja\": \"...\", \"pt\": \"...\"}. Missing languages fall back to en. Omit the field entirely = built-in translated default 'A Gift for You'.",
+      "subtitle": "Overrides the modal subtitle. Same string-or-per-language format as title.",
+      "urgency": "Extra amber highlight line in the modal, e.g. '🔥 Only 200 codes'. Only claim scarcity if a real redemption cap is set in LS. Keep short if also using expiresAt — they share one line.",
+      "expiresAt": "ISO date like 2026-07-18T23:59:59Z. Shows a live ticking timer in the modal (2d 05:12:33) AND auto-hides the whole offer the moment it passes. Match the real LS discount expiry."
     },
-    "OPERATIONS": {
-      "disable": "Set enabled to false (or replace whole file with {}).",
-      "newCampaign": "Change id + code + copy. New id = shows to everyone again.",
-      "checklist": "Before a real launch: 1) LS discount created with duration=once + expiry (+ optional max redemptions), 2) code here matches LS exactly, 3) percent matches LS, 4) minDaysInstalled back to 3."
+    "HOW_TO": {
+      "disable": "Set enabled to false (or replace the whole file content with {}).",
+      "new_campaign": "Change id + code + percent + copy. New id = shows to everyone again, including past dismissers.",
+      "edit_running_campaign": "Keep the same id — users who dismissed it will NOT see your edits. If the change must reach everyone, use a new id.",
+      "propagation": "GitHub caches ~5 min, users' extensions check hourly. Total: fix visible to all users within ~65 min.",
+      "launch_checklist": "1) LS discount active with duration=once + expiry (+ optional max redemptions). 2) code below matches LS exactly. 3) percent matches LS. 4) expiresAt matches LS expiry. 5) minDaysInstalled set to 3."
     }
   },
   "id": "launch-offer-v1",
@@ -24,6 +26,12 @@
   "percent": 10,
   "code": "WELCOME10",
   "minDaysInstalled": 0,
-  "urgency": "🔥 Limited-time launch offer",
+  "urgency": {
+    "en": "🔥 Limited-time launch offer",
+    "es": "🔥 Oferta de lanzamiento por tiempo limitado",
+    "fr": "🔥 Offre de lancement à durée limitée",
+    "ja": "🔥 期間限定ローンチ特典",
+    "pt": "🔥 Oferta de lançamento por tempo limitado"
+  },
   "expiresAt": "2026-07-18T23:59:59Z"
 }
