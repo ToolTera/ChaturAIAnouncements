@@ -1,0 +1,7 @@
+{
+  "id": "launch-offer-v1",
+  "enabled": true,
+  "percent": 20,
+  "code": "YOURCODE20",
+  "minDaysInstalled": 3
+}
