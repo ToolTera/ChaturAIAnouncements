@@ -1,6 +1,36 @@
 {
-  "id": "welcome-v2",
+  "_guide": {
+    "REQUIRED_FIELDS": {
+      "id": "Announcement id. Dismissal is keyed to this — users who dismiss it never see it again UNLESS you use a new id. Editing text under the same id will NOT reach past dismissers. Convention: name-v1, name-v2.",
+      "type": "Banner color + icon. One of: 'info' (blue, neutral news), 'success' (green, good news), 'warning' (yellow, heads-up like maintenance), 'error' (red, something broken).",
+      "message": "The banner text. Plain string for all users, or per-language: {\"en\": \"...\", \"es\": \"...\", \"fr\": \"...\", \"ja\": \"...\", \"pt\": \"...\"}. Missing languages fall back to en.",
+      "dismissible": "true = user can close it (normal). false = stays until you remove it from this file — reserve for critical/outage notices, users resent banners they can't close."
+    },
+    "CHARACTER_LIMITS": {
+      "why": "The banner is a slim toast at the top of the sidebar (~360px wide). Text wraps to multiple lines fine, but 1-2 lines reads best.",
+      "message": "Aim for ~90 chars EN (2 lines). Hard ceiling ~140. ES/PT/FR run 20-30% longer than EN — keep the EN version short and translations usually fit."
+    },
+    "HOW_TO": {
+      "publish": "Edit this file, commit to main. GitHub caches ~5 min, users' extensions check hourly → visible to everyone within ~65 min. Already-open tabs get it too (no reload needed).",
+      "take_down": "Replace the ENTIRE file content with {} — the banner disappears for everyone within the hour.",
+      "new_announcement": "Change the id + message. New id = shows to everyone again, including users who dismissed the previous one.",
+      "fix_typo_quietly": "Edit message, KEEP the same id — only users who haven't dismissed it yet see the fix.",
+      "typical_uses": {
+        "maintenance": "type=warning, e.g. 'Scheduled maintenance July 20, 02:00-03:00 UTC. Cloud sync may pause briefly.'",
+        "new_update": "type=success, e.g. 'v1.1 is live — chat export to PDF now available!'",
+        "known_issue": "type=error + consider dismissible=false, e.g. 'Claude detection is temporarily affected. Fix is rolling out.'",
+        "general_news": "type=info — anything neutral."
+      }
+    }
+  },
+  "id": "welcome-v1",
   "type": "info",
-  "message": "Welcome to ChaturAI! Organise your AI chats across ChatGPT, Gemini, Grok, and Claude — all in one place.",
+  "message": {
+    "en": "Welcome to ChaturAI! Organise your AI chats across ChatGPT, Gemini, Grok, and Claude — all in one place.",
+    "es": "¡Bienvenido a ChaturAI! Organiza tus chats de IA de ChatGPT, Gemini, Grok y Claude — todo en un solo lugar.",
+    "fr": "Bienvenue sur ChaturAI ! Organisez vos conversations IA de ChatGPT, Gemini, Grok et Claude — au même endroit.",
+    "ja": "ChaturAIへようこそ！ChatGPT、Gemini、Grok、Claude のAIチャットを一か所で整理できます。",
+    "pt": "Bem-vindo ao ChaturAI! Organize seus chats de IA do ChatGPT, Gemini, Grok e Claude — tudo em um só lugar."
+  },
   "dismissible": true
 }
