@@ -10,8 +10,16 @@
     "OPTIONAL_FIELDS": {
       "title": "Overrides the modal title. Plain string for all users, or per-language: {\"en\": \"...\", \"es\": \"...\", \"fr\": \"...\", \"ja\": \"...\", \"pt\": \"...\"}. Missing languages fall back to en. Omit the field entirely = built-in translated default 'A Gift for You'.",
       "subtitle": "Overrides the modal subtitle. Same string-or-per-language format as title.",
-      "urgency": "Extra amber highlight line in the modal, e.g. '🔥 Only 200 codes'. Only claim scarcity if a real redemption cap is set in LS. Keep short if also using expiresAt — they share one line.",
+      "urgency": "Extra amber highlight line in the modal, next to the countdown timer. Only claim scarcity if a real redemption cap is set in LS.",
       "expiresAt": "ISO date like 2026-07-18T23:59:59Z. Shows a live ticking timer in the modal (2d 05:12:33) AND auto-hides the whole offer the moment it passes. Match the real LS discount expiry."
+    },
+    "CHARACTER_LIMITS": {
+      "why": "The modal is ~320px wide. Longer text wraps gracefully but looks best on one line. ES/PT/FR run 20-30% longer than EN — write the EN line short and the translations usually fit.",
+      "title": "Max ~30 chars (one line in the modal header). Example: 'Black Friday Sale' = 17.",
+      "subtitle": "Max ~80 chars (wraps to 2 lines fine, avoid 3). Example: 'Our biggest discount of the year.' = 33.",
+      "urgency_without_expiresAt": "Max ~45 chars (has the full line to itself).",
+      "urgency_with_expiresAt": "Max ~22 chars EN / ~28 chars ES-PT-FR — it shares one line with the timer (~11 chars wide). Longer = timer drops to a 2nd line (clean, but less tidy). Example: '🔥 Limited-time offer' = 21. Emoji counts as ~2.",
+      "code": "Max ~20 chars — keeps the code box and Copy button on one line."
     },
     "HOW_TO": {
       "disable": "Set enabled to false (or replace the whole file content with {}).",
@@ -27,11 +35,11 @@
   "code": "WELCOME10",
   "minDaysInstalled": 0,
   "urgency": {
-    "en": "🔥 Limited-time launch offer",
-    "es": "🔥 Oferta de lanzamiento por tiempo limitado",
-    "fr": "🔥 Offre de lancement à durée limitée",
-    "ja": "🔥 期間限定ローンチ特典",
-    "pt": "🔥 Oferta de lançamento por tempo limitado"
+    "en": "🔥 Limited-time offer",
+    "es": "🔥 Oferta por tiempo limitado",
+    "fr": "🔥 Offre à durée limitée",
+    "ja": "🔥 期間限定オファー",
+    "pt": "🔥 Oferta por tempo limitado"
   },
   "expiresAt": "2026-07-18T23:59:59Z"
 }
